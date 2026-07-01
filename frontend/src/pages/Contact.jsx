@@ -213,7 +213,6 @@ export default function Contact() {
         message: submittedData.message.trim(),
         preferredOffice: selectedOffice.city,
       };
-
       console.log(cleanedData);
       toast.success("Message sent successfully.");
       handleClear();
@@ -224,9 +223,6 @@ export default function Contact() {
       setIsSubmitting(false);
     }
   };
-
-  console.log(formData);
-  console.log(isFormValid);
 
   return (
     <main>
