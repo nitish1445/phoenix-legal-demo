@@ -14,9 +14,9 @@ export default function Home() {
       <Hero />
       <AboutPreview />
       <Statistics />
-      <WhyChooseUs />
-      <PracticeAreas limit={6} />
       <Publications />
+      <PracticeAreas limit={6} />
+      <WhyChooseUs />
       <Testimonials />
       <CTA
         eyebrow="Engage The Firm"

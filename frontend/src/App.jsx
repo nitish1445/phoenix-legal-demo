@@ -1,5 +1,11 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import MainLayout from "./layouts/MainLayout.jsx";
 import { useEffect, useState } from "react";
@@ -30,6 +36,7 @@ const Internship = lazy(() => import("./pages/Internship.jsx"));
 const Retainership = lazy(() => import("./pages/Retainership.jsx"));
 const PracticeDetail = lazy(() => import("./pages/PracticeDetail.jsx"));
 const PartnerDetail = lazy(() => import("./pages/PartnerDetail.jsx"));
+const PrivacyPolicy = lazy(() => import("./pages/Privacy.jsx"));
 
 function PageFrame({ children }) {
   return (
@@ -175,6 +182,14 @@ function AnimatedRoutes() {
               element={
                 <PageFrame>
                   <Contact />
+                </PageFrame>
+              }
+            />
+            <Route
+              path="/privacy-policy"
+              element={
+                <PageFrame>
+                  <PrivacyPolicy />
                 </PageFrame>
               }
             />

@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  company,
-  socialLinks,
-} from "../assets/data.js";
+import { company, socialLinks } from "../assets/data.js";
 import { practices } from "../assets/practices.js";
 import { FaLocationDot, FaPhone, FaEnvelope, FaClock } from "react-icons/fa6";
 import logo from "../assets/icons/logo.png";
@@ -93,12 +90,12 @@ export default function Footer() {
           </p>
 
           {/* Legal Links */}
-          <div className="flex flex-col items-center gap-2 text-pl-white/70 text-xs sm:flex-row sm:flex-wrap sm:justify-center sm:gap-0 sm:text-sm">
+          <div className="flex flex-col items-center gap-3 text-center text-xs text-pl-white/65 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-0 sm:text-sm">
             <Link
               to="/privacy-policy"
-              className="group text-pl-white/60 transition-all duration-300 hover:text-pl-gold sm:px-3 sm:first:pl-0"
+              className="group transition-all duration-300 hover:text-pl-gold sm:px-3 sm:first:pl-0"
             >
-              <span className="relative inline-block text-xs">
+              <span className="relative inline-block">
                 Privacy Policy
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-pl-gold transition-all duration-300 group-hover:w-full" />
               </span>
@@ -106,27 +103,17 @@ export default function Footer() {
 
             <span className="hidden h-4 w-px bg-pl-white/20 sm:block" />
 
-            <Link
-              to="/terms-and-conditions"
-              className="group text-pl-white/60 transition-all duration-300 hover:text-pl-gold sm:px-3"
-            >
-              <span className="relative inline-block text-xs">
-                Terms & Conditions
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-pl-gold transition-all duration-300 group-hover:w-full" />
-              </span>
-            </Link>
-
-            <span className="hidden h-4 w-px bg-pl-white/20 sm:block" />
-
-            <Link
-              to="/disclaimer"
-              className="group text-pl-white/60 transition-all duration-300 hover:text-pl-gold sm:px-3"
-            >
-              <span className="relative inline-block text-xs">
-                Disclaimer
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-pl-gold transition-all duration-300 group-hover:w-full" />
-              </span>
-            </Link>
+            <p className="sm:px-3">
+              Designed & Developed by{" "}
+              <a
+                href="https://github.com/nitish1445"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative font-semibold text-pl-white transition-all duration-300 hover:text-pl-gold"
+              >
+                Nitish Kumar.
+              </a>
+            </p>
           </div>
         </div>
       </div>
