@@ -1,0 +1,29 @@
+{
+  "name": "phoenix-legal-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "framer-motion": "latest",
+    "lenis": "latest",
+    "react": "latest",
+    "react-countup": "latest",
+    "react-dom": "latest",
+    "react-hot-toast": "^2.6.0",
+    "react-icons": "latest",
+    "react-intersection-observer": "latest",
+    "react-router-dom": "latest",
+    "swiper": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "latest",
+    "tailwindcss": "latest"
+  }
+}
