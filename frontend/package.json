@@ -12,6 +12,7 @@
     "@vitejs/plugin-react": "latest",
     "framer-motion": "latest",
     "lenis": "latest",
+    "lucide-react": "^1.23.0",
     "react": "latest",
     "react-countup": "latest",
     "react-dom": "latest",

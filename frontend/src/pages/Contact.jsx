@@ -2,11 +2,23 @@ import { useState } from "react";
 import { BsCheckCircle } from "react-icons/bs";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-import { practices } from "../assets/practices.js";
 import PageBanner from "../components/PageBanner.jsx";
 import AnimatedButton from "../components/AnimatedButton.jsx";
 import toast from "react-hot-toast";
 import { span } from "framer-motion/client";
+
+export const subject = [
+  "General Enquiry",
+  "Practice Area Enquiry",
+  "Business Association",
+  "Marketing Initiative",
+  "Media & Publications",
+  "Events & Seminars",
+  "Speaking Engagement",
+  "Careers",
+  "Pro Bono",
+  "Other",
+];
 
 const offices = [
   {
@@ -46,7 +58,7 @@ export default function Contact() {
     lastName: "",
     email: "",
     phone: "",
-    practiceArea: "",
+    subject: "",
     message: "",
     agree: false,
   });
@@ -57,6 +69,7 @@ export default function Contact() {
 
   const namePattern = /^[A-Za-z]+(?:[ '-][A-Za-z]+)*$/;
   const phonePattern = /^[6-9]\d{9}$/;
+  const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+$/;
 
   const formatPhone = (value) => {
     const cleaned = value.replace(/[\s().-]/g, "");
@@ -90,7 +103,7 @@ export default function Contact() {
 
     if (!values.email.trim()) {
       nextErrors.email = "Please enter your email address.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
+    } else if (!emailPattern.test(values.email.trim())) {
       nextErrors.email = "Please enter a valid email address.";
     }
 
@@ -98,12 +111,16 @@ export default function Contact() {
 
     if (!values.phone.trim()) {
       nextErrors.phone = "Please enter your phone number.";
+    } else if (!/^\d{10}$/.test(normalizedPhone)) {
+      nextErrors.phone = "Please enter a valid 10-digit mobile number.";
+    } else if (!/^[6-9]/.test(normalizedPhone)) {
+      nextErrors.phone = "Mobile number must start with 6 to 9 only.";
     } else if (!phonePattern.test(normalizedPhone)) {
-      nextErrors.phone = "Please enter a valid 10-digit Indian mobile number.";
+      nextErrors.phone = "Please enter a valid Indian mobile number.";
     }
 
-    if (!values.practiceArea) {
-      nextErrors.practiceArea = "Please select a practice area.";
+    if (!values.subject) {
+      nextErrors.subject = "Please select a subject.";
     }
 
     if (!values.message.trim()) {
@@ -158,7 +175,7 @@ export default function Contact() {
       lastName: "",
       email: "",
       phone: "",
-      practiceArea: "",
+      subject: "",
       message: "",
       agree: false,
     });
@@ -177,7 +194,7 @@ export default function Contact() {
       lastName: form.lastName.value,
       email: form.email.value,
       phone: form.phone.value,
-      practiceArea: form.practiceArea.value,
+      subject: form.subject.value,
       message: form.message.value,
       agree: form.agree.checked,
     };
@@ -191,7 +208,7 @@ export default function Contact() {
       lastName: true,
       email: true,
       phone: true,
-      practiceArea: true,
+      subject: true,
       message: true,
       agree: true,
     });
@@ -209,7 +226,7 @@ export default function Contact() {
         phone: submittedData.phone.trim()
           ? normalizePhone(submittedData.phone.trim())
           : "",
-        practiceArea: submittedData.practiceArea.trim(),
+        subject: submittedData.subject.trim(),
         message: submittedData.message.trim(),
         preferredOffice: selectedOffice.city,
       };
@@ -400,34 +417,31 @@ export default function Contact() {
 
                 <div>
                   <label className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.25em] text-pl-dark-gold">
-                    Practice Area *
+                    Subject *
                   </label>
                   <select
-                    name="practiceArea"
-                    value={formData.practiceArea}
+                    name="subject"
+                    value={formData.subject}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    aria-invalid={Boolean(
-                      touched.practiceArea && errors.practiceArea,
-                    )}
+                    aria-invalid={Boolean(touched.subject && errors.subject)}
                     className={`w-full bg-transparent border-b border-slate-300 py-3 px-0 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:border-[#c9a84c] transition-colors duration-300 cursor-pointer ${
-                      touched.practiceArea && errors.practiceArea
+                      touched.subject && errors.subject
                         ? "border-red-500 focus:border-red-500"
                         : "border-pl-border"
                     }`}
                     required
                   >
-                    <option value="">Select a practice area...</option>
-                    {practices.map((s) => (
-                      <option key={s.title} value={s.title}>
-                        {s.title}
+                    <option value="">Select a subject...</option>
+                    {subject.map((s) => (
+                      <option key={s.title} value={s}>
+                        {s}
                       </option>
                     ))}
-                    <option value="Other">Other</option>
                   </select>
-                  {touched.practiceArea && errors.practiceArea ? (
+                  {touched.subject && errors.subject ? (
                     <p className="mt-2 text-xs text-red-600">
-                      {errors.practiceArea}
+                      {errors.subject}
                     </p>
                   ) : null}
                 </div>
@@ -488,7 +502,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={!isFormValid || isSubmitting}
-                  className="group flex w-full items-center justify-center border border-pl-gold bg-pl-gold px-6 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-pl-white transition-all duration-300 hover:bg-pl-dark-gold disabled:cursor-not-allowed disabled:border-pl-border disabled:bg-pl-border disabled:text-pl-muted cursor-pointer"
+                  className="group flex w-full items-center justify-center border border-pl-gold bg-pl-gold px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-pl-white transition-all duration-300 hover:bg-pl-dark-gold disabled:cursor-not-allowed disabled:border-pl-border disabled:bg-pl-border disabled:text-pl-muted cursor-pointer"
                 >
                   {isSubmitting ? (
                     "Submitting..."

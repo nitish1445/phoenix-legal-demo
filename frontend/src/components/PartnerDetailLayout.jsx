@@ -166,7 +166,7 @@ export default function PartnerDetailLayout({ partner }) {
               align="start"
             />
 
-            <div className="mt-4 pl-5 md:pl-12 lg:pl-20">
+            <div className="mt-4 pl-2 md:pl-12 lg:pl-20">
               {partner.experience.map((item, index) => (
                 <motion.div
                   key={index}
@@ -272,7 +272,7 @@ export default function PartnerDetailLayout({ partner }) {
               align="start"
             />
 
-            <div className="mt-4 pl-5 md:pl-12 lg:pl-20">
+            <div className="mt-4 pl-2 md:pl-12 lg:pl-20">
               {partner.publications.map((publication, index) => (
                 <motion.div
                   key={index}

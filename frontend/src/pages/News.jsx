@@ -109,28 +109,13 @@ export default function News() {
   return (
     <>
       {/* Pagebanner */}
-      <div>
+      <div ref={sectionHeadingRef}>
         <PageBanner
-          eyebrow="Media & Publications"
-          title="Legal intelligence for decision makers."
-          text="News, articles, updates, and partner-led video briefings from Phoenix Legal."
+          eyebrow="Newsroom"
+          title="Latest News & Announcements."
+          text="Stay informed with the latest firm updates, legal insights, recognitions, and important announcements from Phoenix Legal."
         />
       </div>
-
-      {/* Heading */}
-      <section
-        ref={sectionHeadingRef}
-        className="scroll-mt-8 px-2 pt-24 pb-12 md:pt-32 md:pb-16"
-      >
-        <div className="container-pl">
-          <SectionHeading
-            eyebrow="Newsroom"
-            title="Latest News & Announcements"
-            text="Stay informed with the latest firm updates, legal insights, recognitions, and important announcements from Phoenix Legal."
-            align="start"
-          />
-        </div>
-      </section>
 
       {/* news area  */}
       <section className="px-2 pb-24 pt-8 md:pb-32 md:pt-12">
@@ -138,19 +123,21 @@ export default function News() {
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
             {currentNews.map((item) => (
               <article key={item.title} className="group flex h-full flex-col">
-                <div className="flex items-center justify-between">
+                <h2 className="font-display text-2xl md:text-3xl leading-6 md:leading-tight text-pl-text transition-colors duration-300">
+                  {item.title}
+                </h2>
+
+                <div className="mt-4 flex items-center gap-3">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#143A6F]">
-                    {item.author}
+                    {item.author || "Phoenix Legal"}
                   </p>
+
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-pl-gold shadow-[0_0_8px_rgba(201,168,76,0.45)]" />
 
                   <span className="text-xs text-pl-muted">{item.date}</span>
                 </div>
 
                 <div className="mt-2 h-px w-24 bg-linear-to-r from-pl-gold via-pl-gold/40 to-transparent" />
-
-                <h2 className="mt-4 font-display text-3xl leading-8 md:leading-tight text-pl-text transition-colors duration-300">
-                  {item.title}
-                </h2>
 
                 <p className="mt-4 flex-1 text-sm md:leading-7 text-pl-muted md:text-base">
                   {item.details}

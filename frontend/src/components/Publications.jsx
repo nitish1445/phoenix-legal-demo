@@ -22,14 +22,14 @@ export default function Publications({
             text="Deal notes, legal updates, and boardroom briefings from Phoenix Legal partners and counsel."
           />
 
-          <AnimatedButton to="/media" variant="light">
-            View Media
+          <AnimatedButton to="/articles-updates" variant="light">
+            Read Articles
           </AnimatedButton>
         </div>
 
-        <div className="grid gap-20">
-          <NewsPreview limit={2} />
+        <div className="grid gap-16">
           <ArticlePreview limit={2} />
+          <NewsPreview limit={2} />
         </div>
       </div>
     </section>

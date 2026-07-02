@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
@@ -90,28 +91,13 @@ export default function ArticleUpdate() {
   return (
     <>
       {/* Pagebanner */}
-      <div>
+      <div ref={sectionHeadingRef}>
         <PageBanner
-          eyebrow="Media & Publications"
-          title="Legal intelligence for decision makers."
-          text="News, articles, updates, and partner-led video briefings from Phoenix Legal."
+          eyebrow="insights"
+          title="Articles, Publications & Legal Perspectives"
+          text="Explore expert commentary, legal developments, firm publications, and thought leadership from the lawyers at Phoenix Legal."
         />
       </div>
-
-      {/* Heading */}
-      <section
-        ref={sectionHeadingRef}
-        className="scroll-mt-8 px-2 pt-24 pb-12 md:pt-32 md:pb-16"
-      >
-        <div className="container-pl">
-          <SectionHeading
-            eyebrow="Insights"
-            title="Articles, Publications & Legal Perspectives"
-            text="Explore expert commentary, legal developments, firm publications, and thought leadership from the lawyers at Phoenix Legal."
-            align="start"
-          />
-        </div>
-      </section>
 
       {/* Article area  */}
       <section className="px-2 pb-24 pt-8 md:pb-32 md:pt-12">
@@ -127,47 +113,61 @@ export default function ArticleUpdate() {
                   key={item.title}
                   className="group flex h-full flex-col"
                 >
-                  <div className="flex flex-col gap-2 ">
+                  <h2 className="font-display text-2xl md:text-3xl leading-6 md:leading-tight text-pl-text transition-colors duration-300">
+                    {item.title}
+                  </h2>
+
+                  <div className="mt-4 flex items-center gap-3">
                     <div className="flex flex-wrap gap-1">
-                      {articleContributors.map((name, index) => (
-                        <span
-                          key={`${item.slug}-${name}`}
-                          className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#143A6F]"
-                        >
-                          {name}
-                          {index !== articleContributors.length - 1 && " & "}
+                      {articleContributors?.length > 0 ? (
+                        articleContributors.map((name, index) => (
+                          <span
+                            key={`${item.slug}-${name}`}
+                            className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#143A6F]"
+                          >
+                            {name}
+                            {index !== articleContributors.length - 1 && " & "}
+                          </span>
+                        ))
+                      ) : (
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#143A6F]">
+                          Phoenix Legal
                         </span>
-                      ))}
+                      )}
                     </div>
 
-                    <span className="text-xs text-pl-muted">{item.date}</span>
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-pl-gold shadow-[0_0_8px_rgba(201,168,76,0.45)]" />
+
+                    <span className="shrink-0 text-xs text-pl-muted">
+                      {item.date}
+                    </span>
                   </div>
 
                   <div className="mt-2 h-px w-24 bg-linear-to-r from-pl-gold via-pl-gold/40 to-transparent" />
-
-                  <h2 className="mt-4 font-display text-3xl leading-8 md:leading-tight text-pl-text transition-colors duration-300">
-                    {item.title}
-                  </h2>
 
                   <p className="mt-4 flex-1 text-sm md:leading-7 text-pl-muted md:text-base">
                     {item.description}
                   </p>
 
                   <div className="mt-4 flex items-center justify-between border-t border-pl-border pt-5">
-                    <a
-                      href={item.link ?? "#"}
-                      target={item.link ? "_blank" : undefined}
-                      rel={item.link ? "noopener noreferrer" : undefined}
-                      onClick={(event) => {
-                        if (!item.link) event.preventDefault();
-                      }}
+                    <Link
+                      to={
+                        item.slug
+                          ? `/articles-updates/${item.slug}`
+                          : item.link
+                            ? item.link
+                            : "#"
+                      }
+                      onClick={() =>
+                        window.scrollTo({ top: 0, behavior: "instant" })
+                      }
                       className="group/link inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-pl-dark-gold transition group-hover:text-pl-gold!"
                     >
                       Read Article
                       <span className="transition-transform duration-300 group-hover/link:translate-x-1">
                         →
                       </span>
-                    </a>
+                    </Link>
                   </div>
                 </article>
               );

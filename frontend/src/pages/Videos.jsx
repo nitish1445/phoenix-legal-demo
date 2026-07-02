@@ -3,35 +3,65 @@ import PageBanner from "../components/PageBanner.jsx";
 import SectionHeading from "../components/SectionHeading.jsx";
 import { videos } from "../assets/news-vidoes.js";
 import { Link } from "react-router-dom";
-import { FiArrowUpRight  } from "react-icons/fi";
+import { FiArrowUpRight } from "react-icons/fi";
 
 const Videos = () => {
   return (
     <>
       <div>
         <PageBanner
-          eyebrow="Media & Publications"
-          title="Legal intelligence for decision makers."
-          text="News, articles, updates, and partner-led video briefings from Phoenix Legal."
+          eyebrow="Knowledge Centre"
+          title="Videos & Thought Leadership"
+          text="Explore our collection of expert talks, legal updates, webinars, and industry insights from Phoenix Legal."
         />
       </div>
 
       {/* Heading */}
-      <section className="scroll-mt-8 px-2 pt-24 pb-12 md:pt-32 md:pb-16">
+      <section className="px-2 py-20 md:py-24">
         <div className="container-pl">
-          <SectionHeading
-            eyebrow="Knowledge Centre"
-            title="Videos & Thought Leadership"
-            text="Explore our collection of expert talks, legal updates, webinars, and industry insights from Phoenix Legal."
-            align="start"
-          />
+          <div className="max-w-4xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-pl-dark-gold">
+              Video Library
+            </p>
+
+            <h2 className="mt-3 font-display text-4xl md:leading-tight text-pl-text md:text-5xl">
+              Insights Beyond the Written Word
+            </h2>
+
+            <div className="mt-1 h-px w-28 bg-linear-to-r from-pl-gold via-pl-gold/40 to-transparent" />
+
+            <p className="mt-2 max-w-3xl text-base leading-5 md:leading-8 text-pl-walnut md:text-lg">
+              Explore expert discussions, legal perspectives, webinars,
+              conference sessions, and industry commentary presented by the
+              lawyers at Phoenix Legal. Our videos offer practical insights into
+              emerging legal developments, regulatory changes, and matters
+              shaping businesses across India and beyond.
+            </p>
+
+            <div className="flex items-center gap-10">
+              <div>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-pl-muted">
+                  Featured Videos
+                </p>
+                <p className="font-display text-5xl text-pl-gold">
+                  {videos.length}
+                </p>
+              </div>
+              <div>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-pl-muted">
+                  Practical Insights
+                </p>
+                <p className="font-display text-5xl text-pl-gold">100%</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Video Section */}
       <section className="scroll-mt-8 px-2 pb-24 md:pb-32">
         <div className="container-pl">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
             {videos.map((item) => {
               const videoId = new URL(item.link).searchParams.get("v");
               const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
@@ -69,7 +99,7 @@ const Videos = () => {
                   </a>
 
                   {/* Content */}
-                  <div className="flex flex-1 flex-col p-6 md:p-7">
+                  <div className="flex flex-1 flex-col p-5 md:p-6">
                     {/* Meta */}
                     <div className="flex items-center justify-between gap-4">
                       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-pl-dark-gold">
@@ -82,20 +112,20 @@ const Videos = () => {
                     </div>
 
                     {/* Accent */}
-                    <div className="mt-2 h-px w-20 bg-linear-to-r from-pl-gold via-pl-gold/40 to-transparent" />
+                    <div className="mt-1 h-px w-20 bg-linear-to-r from-pl-gold via-pl-gold/40 to-transparent" />
 
                     {/* Title */}
-                    <h3 className="mt-3 font-display text-[1.3rem] leading-4.5 md:leading-tight text-pl-text transition-colors duration-300 group-hover:text-[#143A6F] md:text-[1.6rem]">
+                    <h3 className="mt-3 font-display text-[1.3rem] leading-4.5 md:leading-6 text-pl-text transition-colors duration-300 group-hover:text-[#143A6F] md:text-[1.6rem]">
                       {item.heading}
                     </h3>
 
                     {/* Description */}
-                    <p className="mt-2 flex-1 text-sm md:leading-6 text-pl-muted">
+                    <p className="mt-2 flex-1 text-sm text-pl-muted">
                       {item.details}
                     </p>
 
                     {/* Footer */}
-                    <div className="mt-3 flex items-center justify-between border-t border-pl-border pt-3">
+                    <div className="mt-2 flex items-center justify-between border-t border-pl-border pt-2">
                       <Link
                         to={item.link}
                         target="_blank"
@@ -109,7 +139,7 @@ const Videos = () => {
                         target="_blank"
                         className="text-lg text-pl-gold transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-[1.2]"
                       >
-                        <FiArrowUpRight  className="text-xl" />
+                        <FiArrowUpRight className="text-xl" />
                       </Link>
                     </div>
                   </div>

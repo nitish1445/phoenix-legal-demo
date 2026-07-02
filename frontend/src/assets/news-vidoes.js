@@ -24,7 +24,7 @@ export const news = [
     details:
       "The Government announced fresh policy initiatives aimed at accelerating renewable energy investments, encouraging foreign participation and strengthening India's clean energy ecosystem.",
     date: "10 March 2026",
-    author: "Rahul Kapoor",
+    author: null,
     link: "https://www.pib.gov.in",
   },
   {

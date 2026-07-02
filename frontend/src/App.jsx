@@ -24,9 +24,11 @@ const Home = lazy(() => import("./pages/Home.jsx"));
 const About = lazy(() => import("./pages/About.jsx"));
 const Award = lazy(() => import("./pages/Award.jsx"));
 const Practices = lazy(() => import("./pages/Practices.jsx"));
-const Media = lazy(() => import("./pages/Media.jsx"));
 const News = lazy(() => import("./pages/News.jsx"));
 const ArticleUpdate = lazy(() => import("./pages/ArticleUpdate.jsx"));
+const ArticleUpdateDetailPage = lazy(
+  () => import("./pages/ArticleUpdateDetail.jsx"),
+);
 const Videos = lazy(() => import("./pages/Videos.jsx"));
 const Partners = lazy(() => import("./pages/Partners.jsx"));
 const Career = lazy(() => import("./pages/Career.jsx"));
@@ -126,6 +128,14 @@ function AnimatedRoutes() {
               element={
                 <PageFrame>
                   <ArticleUpdate />
+                </PageFrame>
+              }
+            />
+            <Route
+              path="/articles-updates/:slug"
+              element={
+                <PageFrame>
+                  <ArticleUpdateDetailPage />
                 </PageFrame>
               }
             />

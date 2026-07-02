@@ -36,7 +36,7 @@ export const company = {
   description:
     "Founded in 2008, Phoenix Legal is a leading full-service Indian law firm offering comprehensive legal services across transactional, regulatory, advisory, dispute resolution, and tax matters.",
   email: "contact@phoenixlegal.com",
-  phone: "+91 22 4000 1900",
+  phone: "+91 22 4000 XXXX",
   address: "Phoenix House, Nariman Point, Mumbai 400021",
   hours: "Monday to Friday, 9:30 AM - 7:00 PM",
 };
@@ -73,14 +73,14 @@ export const statistics = [
     label: "Practice Areas",
   },
   {
-    value: 150,
+    value: 50,
     suffix: "+",
-    label: "Corporate Clients",
+    label: "Awards & Recognitions",
   },
   {
-    value: 500,
+    value: 30,
     suffix: "+",
-    label: "Matters closed across sectors",
+    label: "Legal Professionals",
   },
   {
     value: 98,
@@ -285,5 +285,4 @@ export const socialLinks = [
     icon: FaPhoneAlt,
     path: `tel:${company.phone.replaceAll(" ", "")}`,
   },
-  { label: "Hours", icon: FaRegClock, path: "/contact" },
 ];

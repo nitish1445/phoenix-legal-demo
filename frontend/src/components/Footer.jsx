@@ -106,9 +106,10 @@ export default function Footer() {
             <p className="sm:px-3">
               Designed & Developed by{" "}
               <a
-                href="https://github.com/nitish1445"
+                href="https://www.linkedin.com/in/nitish1445/"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="View Developer"
                 className="group relative font-semibold text-pl-white transition-all duration-300 hover:text-pl-gold"
               >
                 Nitish Kumar.
